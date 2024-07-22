@@ -1,0 +1,14 @@
+.img-container {
+  width: 80%;
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+.img-container img {
+  max-width: 250px;
+}
+.listname {
+  color: white;
+}
