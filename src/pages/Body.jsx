@@ -3,6 +3,7 @@ import axios from "axios";
 import SearchPage from "./SearchPage";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
 import "./Body.css";
 
 const Body = () => {
@@ -10,6 +11,7 @@ const Body = () => {
   const [images, setImages] = useState([]);
   const [email, setEmail] = useState("");
   // const [savedLists, setSavedLists] = useState([]);
+  const VITE_API = import.meta.env.VITE_API;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const Body = () => {
       // console.log(listName, list, email);
       try {
         const response = await axios.post(
-          "http://localhost:5500/lists/addlist",
+          `${VITE_API}lists/addlist`,
           {
             listName,
             list,
@@ -67,7 +69,7 @@ const Body = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
-      const response = await axios.get("http://localhost:5500/profile", {
+      const response = await axios.get(`${VITE_API}profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

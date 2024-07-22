@@ -7,6 +7,7 @@ const ListsPage = () => {
   const [list, setList] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const VITE_API = import.meta.env.VITE_API;
   const [email, setEmail] = useState("");
   useEffect(() => {
     fetchProfile();
@@ -21,7 +22,7 @@ const ListsPage = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5500/profile", {
+      const response = await axios.get(`${VITE_API}profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -35,7 +36,7 @@ const ListsPage = () => {
 
   const fetchcustomlist = async () => {
     try {
-      const response = await axios.get("http://localhost:5500/lists/getlists", {
+      const response = await axios.get(`${VITE_API}lists/getlists`, {
         params: { email },
       });
       setList(response.data);
@@ -47,7 +48,7 @@ const ListsPage = () => {
   const deleteListById = async (name, userEmail) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5500/lists/delete/${encodeURIComponent(
+        `${VITE_API}lists/delete/${encodeURIComponent(
           userEmail
         )}/${encodeURIComponent(name)}`
       );

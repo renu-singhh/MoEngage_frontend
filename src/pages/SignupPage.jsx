@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignupPage.css";
 
+
 const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const VITE_API = import.meta.env.VITE_API;
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,7 +27,7 @@ const SignupPage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5500/user/auth/signup`,
+        `${VITE_API}user/auth/signup`,
         { email, password }
       );
       // console.log(response.data);

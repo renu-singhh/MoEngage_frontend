@@ -5,6 +5,7 @@ import "./SearchPage.css"; // Import the CSS file
 
 const SearchPage = ({ images, handleSave, navigate }) => {
   const [filterText, setFilterText] = useState("");
+  const VITE_API = import.meta.env.VITE_API;
   const [customList, setCustomList] = useState([]);
   // Function to filter images based on the filterText
   const filterImages = (filterText) => {

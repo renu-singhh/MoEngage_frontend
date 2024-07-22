@@ -7,12 +7,12 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const VITE_API = import.meta.env.VITE_API;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:5500/user/auth/login`,
+        `${VITE_API}user/auth/login`,
         { email, password }
       );
       // console.log(response.data);
